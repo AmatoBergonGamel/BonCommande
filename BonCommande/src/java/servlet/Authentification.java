@@ -46,6 +46,9 @@ public class Authentification extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String PNom = request.getParameter("nom");
+        String message = "Nom entré en paramètre de l'url : " + PNom;
+        request.setAttribute("name", message);
         processRequest(request, response);
     }
 
@@ -60,9 +63,6 @@ public class Authentification extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String PNom = request.getParameter("nom");
-        String message = "Nom entré : " + PNom;
-        request.setAttribute("name", message);
         processRequest(request, response);
     }
 
