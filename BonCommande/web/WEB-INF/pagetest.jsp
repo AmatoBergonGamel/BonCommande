@@ -15,8 +15,13 @@
         <h1>Page générée à l'aide de jsp</h1>
         <p>cette page pourra par la suite servir à l'authentification des clients ainsi qu'à leur inscription dans la base de donnée</p>
         <%
-            String attribut = (String) request.getAttribute("name");
-            out.println(attribut);
+            String attribut1 = (String) request.getAttribute("name");
+            out.println(attribut1);
+        %><br>
+        <%
+            
+            String attribut2 = (String) request.getAttribute("login");
+            out.println(attribut2);
         %>
         
     </body>
