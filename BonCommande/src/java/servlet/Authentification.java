@@ -47,8 +47,11 @@ public class Authentification extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String PNom = request.getParameter("nom");
-        String message = "Nom entré en paramètre de l'url : " + PNom;
-        request.setAttribute("name", message);
+        String messagenom = "Nom entré en paramètre de l'url : " + PNom;
+        request.setAttribute("name", messagenom);
+        String PLogin = request.getParameter("mdp");
+        String messagelogin = "Mot de passe entré en paramètre de l'url : " + PLogin;
+        request.setAttribute("login", messagelogin);
         processRequest(request, response);
     }
 
