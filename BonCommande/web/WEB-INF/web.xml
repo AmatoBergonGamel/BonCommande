@@ -9,6 +9,16 @@
         <url-pattern>/Test</url-pattern>
         <url-pattern>/test</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Authentification</servlet-name>
+        <servlet-class>servlet.Authentification</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Authentification</servlet-name>
+        <url-pattern>/Authentification</url-pattern>
+        <url-pattern>/authentification</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
