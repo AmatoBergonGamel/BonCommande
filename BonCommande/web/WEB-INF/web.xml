@@ -4,12 +4,15 @@
         <servlet-name>Test</servlet-name>
         <servlet-class>servlet.Test</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FinCréationClient</servlet-name>
+        <servlet-class>servlet.FinCréationClient</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
         <url-pattern>/test</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>Authentification</servlet-name>
         <servlet-class>servlet.Authentification</servlet-class>
@@ -18,6 +21,18 @@
         <servlet-name>Authentification</servlet-name>
         <url-pattern>/Authentification</url-pattern>
         <url-pattern>/authentification</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CréationClient</servlet-name>
+        <servlet-class>servlet.CréationClient</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CréationClient</servlet-name>
+        <url-pattern>/CreationClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinCréationClient</servlet-name>
+        <url-pattern>/creationClient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
