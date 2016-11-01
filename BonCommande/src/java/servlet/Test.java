@@ -1,6 +1,6 @@
 /*
 example de page html générée avec du code java (inutile au projet car la vue doit être gérée avec du jsp)
- */
+*/
 package servlet;
 
 import java.io.IOException;
