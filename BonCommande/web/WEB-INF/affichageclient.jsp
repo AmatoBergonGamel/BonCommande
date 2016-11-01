@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Client</title>
+        <%@ include file="header.jsp" %>
     </head>
     <body>
+        <%@ include file="menu.jsp" %>
         <h1>Fiche client</h1>
         
         

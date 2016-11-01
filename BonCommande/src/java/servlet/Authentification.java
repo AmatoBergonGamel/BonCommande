@@ -30,7 +30,7 @@ public class Authentification extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/pagetest.jsp").forward(request,response);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/authentification.jsp").forward(request,response);
         }
     
 

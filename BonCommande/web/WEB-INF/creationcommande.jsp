@@ -3,11 +3,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <title>Création d'une commande</title>
-        <link type="text/css" rel="stylesheet" href="Style/style.css" />
+        <%@ include file="header.jsp" %>
     </head>
     <body>
+        <%@ include file="menu.jsp" %>
         <div>
             <form method="get" action="creationCommande">
                 <fieldset>

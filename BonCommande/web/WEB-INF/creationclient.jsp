@@ -1,41 +1,53 @@
 
 
-<%@ page pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Création d'un client</title>
-        <link type="text/css" rel="stylesheet" href="Style/style.css" />
+    <head>  
+        <%@ include file="header.jsp" %>
     </head>
     <body>
-        <div>
-            <form method="get" action="creationClient">
+        <%@ include file="menu.jsp" %>
+        <div class="container col-md-8 col-md-offset-2">
+            <form method="post" action="creationClient">
                 <fieldset>
-                    <legend>Informations client</legend>
-    
-                    <label for="nomClient">Nom <span class="requis">*</span></label>
-                    <input type="text" id="nomClient" name="nomClient" value="" size="20" maxlength="20" />
-                    <br />
-                    
-                    <label for="prenomClient">Prénom </label>
-                    <input type="text" id="prenomClient" name="prenomClient" value="" size="20" maxlength="20" />
-                    <br />
-    
-                    <label for="adresseClient">Adresse de livraison <span class="requis">*</span></label>
-                    <input type="text" id="adresseClient" name="adresseClient" value="" size="20" maxlength="20" />
-                    <br />
-    
-                    <label for="telephoneClient">Numéro de téléphone <span class="requis">*</span></label>
-                    <input type="text" id="telephoneClient" name="telephoneClient" value="" size="20" maxlength="20" />
-                    <br />
-                    
-                    <label for="emailClient">Adresse email</label>
-                    <input type="email" id="emailClient" name="emailClient" value="" size="20" maxlength="60" />
-                    <br />
+                    <legend>Création d'un nouveau client</legend>
+                    <div class="form-group row">
+                        <label for="nomClient" class="col-md-3 col-form-label">Nom <span class="requis">*</span></label>
+                        <div class="col-md-9">
+                            <input type="text" id="nomClient" class="form-control" name="nomClient" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="prenomClient" class="col-md-3 col-form-label">Prénom </label>
+                        <div class="col-md-9">
+                            <input type="text" id="prenomClient" name="prenomClient" value="" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label for="adresseClient" class="col-md-3 col-form-label">Adresse de livraison <span class="requis">*</span></label>
+                        <div class="col-md-9">
+                            <input type="text" id="adresseClient" name="adresseClient" value="" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label for="telephoneClient" class="col-md-3 col-form-label">Numéro de téléphone <span class="requis">*</span></label>
+                        <div class="col-md-9">
+                            <input type="text" id="telephoneClient" name="telephoneClient" value="" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label for="emailClient" class="col-md-3 col-form-label">Adresse email</label>
+                        <div class="col-md-9">
+                            <input type="email" id="emailClient" name="emailClient" value="" class="form-control"/>
+                        </div>
+                    </div>
                 </fieldset>
-                <input type="submit" value="Valider"  />
-                <input type="reset" value="Remettre à zéro" /> <br />
+                <input type="submit" class="btn btn-primary" value="Valider" />
+                <input type="reset" class="btn btn-warning" value="Remettre à zéro" /> <br />
             </form>
         </div>
     </body>
