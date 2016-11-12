@@ -18,8 +18,14 @@
     <body>
         <h1>Vous êtes connecté</h1>
          <% 
-            String email = (String) request.getAttribute("attemail");
-            out.println( email );
+            String aemail = (String) request.getAttribute("attemail");
+            String apassword = (String) request.getAttribute("attpassword");
+            out.println( "email : " + aemail );
          %>
+         <br>
+         <% 
+            out.println( "mot de passe : " + apassword );
+         %>
+         <br>
     </body>
 </html>
