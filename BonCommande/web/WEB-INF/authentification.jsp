@@ -13,13 +13,13 @@
     <body>
         <%@ include file="menu.jsp" %>
         <div class="container col-md-8 col-md-offset-2">
-                <form method="post">
+                <form method="post" action="Connection">
                     <fieldset>
                         <legend>Formulaire d'authentification</legend>
                         <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">Email :</label>
                             <div class="col-sm-10">
-                                <input type="email" id="email" class="form-control"placeholder="Email">
+                                <input type="email" id="email" name="email" class="form-control"placeholder="Email">
                             </div>
                         </div>
                         <div class="form-group row">
