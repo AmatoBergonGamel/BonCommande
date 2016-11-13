@@ -1,31 +1,39 @@
-<%-- 
-    Document   : Connection
-    Created on : 12 nov. 2016, 19:59:37
-    Author     : nico
---%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@ include file="header.jsp" %>
     </head>
     <body>
-        <h1>Vous êtes connecté</h1>
-         <% 
+        <%@ include file="menu.jsp" %>
+        
+        <div class="row">
+        <% 
+            
             String aemail = (String) request.getAttribute("attemail");
             String apassword = (String) request.getAttribute("attpassword");
-            out.println( "email : " + aemail );
-         %>
-         <br>
-         <% 
-            out.println( "mot de passe : " + apassword );
-         %>
-         <br>
+
+            if(aemail == null) {
+        
+            out.println("<h1 class='col-md-8 col-md-offset-2'>Connection impossible</h1>"
+                    + "<div class='alert alert-danger col-md-8 col-md-offset-2' role='alert'>"
+                    + "<p> Une erreur est survenue lors de la connection.</p>"
+                    + "<p> Votre mot de passe ou votre identifiant doit être incorrect.</p>"
+                    + "</div>");
+        
+             } else {
+       
+        
+            out.println("<h1 class='col-md-8 col-md-offset-2'>Vous êtes connecté(e)</h1>"
+                        + "<div class='alert alert-success col-md-8 col-md-offset-2' role='alert'>"
+                        + "<p>Connection à votre compte réussie</p>"
+                        + "</div>");
+                
+       
+           }
+        %>
+        
+        </div>
+          
     </body>
 </html>
