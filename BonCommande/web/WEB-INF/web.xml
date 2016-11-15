@@ -12,6 +12,10 @@
         <servlet-name>Connection</servlet-name>
         <servlet-class>servlet.Connection</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Deconnection</servlet-name>
+        <servlet-class>servlet.Deconnection</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -41,6 +45,10 @@
     <servlet-mapping>
         <servlet-name>Connection</servlet-name>
         <url-pattern>/Connection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Deconnection</servlet-name>
+        <url-pattern>/Deconnection</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

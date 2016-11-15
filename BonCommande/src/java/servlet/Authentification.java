@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author nico
  */
-@WebServlet(name = "Authentification", urlPatterns = {"/Authentification"})
+//@WebServlet(name = "/BonCommande/Authentification", urlPatterns = {"/Authentification"})
 public class Authentification extends HttpServlet {
 
     /**

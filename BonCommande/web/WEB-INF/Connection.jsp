@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="beans.User"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,11 +10,14 @@
         
         <div class="row">
         <% 
-            
-            String aemail = (String) request.getAttribute("attemail");
-            String apassword = (String) request.getAttribute("attpassword");
-
-            if(aemail == null) {
+         //   User utilisateur = (User) session.getAttribute("utilisateur");
+        //    out.println("<h1 class='col-md-8 col-md-offset-2'>"+utilisateur.getEmail()+"</h1>");
+            //String essai2 = (String) session.getAttribute("mdp");
+           
+         /*  String aemail = (String) request.getAttribute("attemail");
+           String apassword = (String) request.getAttribute("attpassword");
+       
+           /* if(aemail == null) {
         
             out.println("<h1 class='col-md-8 col-md-offset-2'>Connection impossible</h1>"
                     + "<div class='alert alert-danger col-md-8 col-md-offset-2' role='alert'>"
@@ -30,7 +34,8 @@
                         + "</div>");
                 
        
-           }
+           }*/
+          
         %>
         
         </div>

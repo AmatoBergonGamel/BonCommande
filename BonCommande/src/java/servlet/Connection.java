@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import jdbc.DataAccess;
-
+import beans.User;
 
 /**
  *
@@ -83,10 +83,15 @@ public class Connection extends HttpServlet {
             int mdp; 
             mdp = Integer.parseInt(motDePasse); 
             int res = dao.verifAuthentification(email);
+ 
+            User user = new User(email,motDePasse);
+            HttpSession UserSession = request.getSession();
+            UserSession.setAttribute("utilisateur", user);
 
+                    
             if(res == mdp) {
-                request.setAttribute("attemail", email);
-                request.setAttribute("attpassword", motDePasse);
+                //request.setAttribute("attemail", email);
+               // request.setAttribute("attpassword", motDePasse);
                 processRequest(request, response);
             } else {
                               
@@ -96,36 +101,7 @@ public class Connection extends HttpServlet {
         } catch(Exception ex) {
         
         }
-            
-           /*try {
-            // CrÃ©Ã©r le DAO avec sa source de donnÃ©es
-            DataAccess dao = new DataAccess(getDataSource());
-            // On rÃ©cupÃ¨re les paramÃ¨tres de la requÃªte
-            String email = request.getParameter("email");
-            String motDePasse = request.getParameter("password");
-            int mdp = Integer.parseInt(motDePasse);
-            String jspView; // La page Ã  afficher
-            // En fonction des paramÃ¨tres, on initialise les variables utilisÃ©es dans les JSP
-            // Et on choisit la vue (page JSP) Ã  afficher
-            int res = dao.verifAuthentification(email);
-            String nom = dao.findNameOfCustomer(mdp);
-            if(res == mdp){
-               request.setAttribute("attemail", email);
-        request.setAttribute("attpassword", motDePasse);
-        processRequest(request, response);
-            } else {
-                request.setAttribute("messageErreur", "Identifiant ou mot de passe incorrect");
-                        processRequest(request, response);
-             }
-             // On continue vers la page JSP sÃ©lectionnÃ©e
-            
-             
-        } catch (Exception ex) {
-			// on stocke le message d'erreur pour utilisation dans la JSP
-			request.setAttribute("exception", ex.getMessage());
-			// On va vers la page d'affichage
-		request.getRequestDispatcher("erreur.jsp").forward(request, response);
-        }*/
+      
     }
 
     /**
