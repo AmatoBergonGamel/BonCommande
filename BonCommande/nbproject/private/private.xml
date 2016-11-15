@@ -5,10 +5,12 @@
         <group>
             <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/src/java/servlet/Authentification.java</file>
             <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/src/java/servlet/Connection.java</file>
-            <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/src/java/jdbc/DataAccess.java</file>
             <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/src/java/beans/Client.java</file>
+            <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/accueil.jsp</file>
             <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/Connection.jsp</file>
             <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/authentification.jsp</file>
+            <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/affichageclient.jsp</file>
+            <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/src/java/jdbc/DataAccess.java</file>
         </group>
     </open-files>
 </project-private>
