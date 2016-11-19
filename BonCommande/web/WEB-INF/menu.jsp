@@ -15,21 +15,22 @@
                 <div class="container-fluid">
 
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="BonCommande/">Application Bon de Commande</a> <!-- lien qui revient à l'accueil -->
+                        <a class="navbar-brand" href="/BonCommande">Application Bon de Commande</a> <!-- lien qui revient à l'accueil -->
                        
                        
                       
                     </div>
                      <% 
-                        // User utilisateur = (User) session.getAttribute("utilisateur");
+                        //User utilisateur = (User) session.getAttribute("utilisateur");
                         if(session.getAttribute("utilisateur") != null) {
                             User user = (User) session.getAttribute("utilisateur");
                            
                            
                         if (user.getEmail() != null) {
-                            out.println("<form method='post' action='Deconnection'>"
+                            out.println("<form method='post' action='/BonCommande/Deconnection'>"
                                        + "<input type='submit' class='btn btn-danger pull-right' value='Se déconnecter'>"
                                        + "</form>");
+                            out.println(user.getEmail());
                            }                         
                         } else {
                             out.println("<form method='post' action='/BonCommande/Authentification'>"

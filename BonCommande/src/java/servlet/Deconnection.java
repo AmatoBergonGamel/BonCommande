@@ -31,10 +31,8 @@ public class Deconnection extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
-        session.invalidate();
-        
-        response.sendRedirect("/BonCommande/Accueil");
+        request.getSession().invalidate();
+        response.sendRedirect("/BonCommande");
         
         
     }
