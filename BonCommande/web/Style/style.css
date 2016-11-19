@@ -13,20 +13,15 @@ body, p, legend, label, input {
     font: normal 8pt verdana, helvetica, sans-serif;
 }
 
-/* Styles et couleurs -------------------------------------------------------------------------- */
-.requis {
-    color: #c00;
+#bonjourCo {
+    padding-top: 10px;
+    color: red;
 }
 
-.erreur {
-    color: #900;
+#formCo {
+    margin-top: 5px;
 }
 
-.succes {
-    color: #090;
-}
-
-.info {
-    font-style: italic;
-    color: #E8A22B;
+p {
+    color: red;
 }

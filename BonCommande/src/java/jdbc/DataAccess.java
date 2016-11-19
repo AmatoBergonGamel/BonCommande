@@ -10,6 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.DataSource;
+import beans.User;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -78,6 +81,43 @@ public class DataAccess {
 		if (rs.next()) { // Pas la peine de faire while, il y a 1 seul enregistrement
 			// On rÃ©cupÃ¨re les champs nÃ©cessaires de l'enregistrement courant
 			result = rs.getString("NAME");
+		}
+		// On ferme tout
+		rs.close();
+		stmt.close();
+		connection.close();
+		
+		return result;
+	}
+        
+        /**
+	 * Trouver un Customer Ã  partir de sa clÃ©
+	 *
+	 * @param customerID la clÃ© du CUSTOMER Ã  rechercher
+	 * @return l'enregistrement correspondant dans la table CUSTOMER, ou null si pas trouvÃ©
+	 * @throws SQLException
+	 */
+	public User findAllOfCustomer(int customerID) throws SQLException {
+		User result = null;
+
+		// Une requÃªte SQL paramÃ©trÃ©e
+		String sql = "SELECT * FROM CUSTOMER WHERE CUSTOMER_ID = ?";
+		// Ouvrir une connexion
+		Connection connection = myDataSource.getConnection();
+		// On crÃ©e un statement pour exÃ©cuter une requÃªte
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setInt(1, customerID);
+		
+		// Un ResultSet pour parcourir les enregistrements du rÃ©sultat
+		ResultSet rs = stmt.executeQuery();
+		if (rs.next()) { // Pas la peine de faire while, il y a 1 seul enregistrement
+			// On rÃ©cupÃ¨re les champs nÃ©cessaires de l'enregistrement courant
+			String name = rs.getString("NAME");
+                        String email = rs.getString("EMAIL");
+                        String password = Integer.toString(customerID);
+                        
+                        result = new User(name, email,password);
+                        
 		}
 		// On ferme tout
 		rs.close();

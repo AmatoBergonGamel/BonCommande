@@ -20,19 +20,31 @@
                        
                       
                     </div>
+                    
+                    <div class="" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">Ajouter</a></li>
+                            <li><a href="#">Modifier</a></li>
+                            <li><a href="#">Supprimer</a></li>     
+                         </ul>
+                    </div>
+       
                      <% 
-                        // User utilisateur = (User) session.getAttribute("utilisateur");
                         if(session.getAttribute("utilisateur") != null) {
                             User user = (User) session.getAttribute("utilisateur");
                            
                            
                         if (user.getEmail() != null) {
-                            out.println("<form method='post' action='Deconnection'>"
-                                       + "<input type='submit' class='btn btn-danger pull-right' value='Se déconnecter'>"
-                                       + "</form>");
+                            
+                           out.println("<p class='nav navbar-nav' id='bonjourCo'>Bonjour "+ user.getName()+"</p>"
+                                    + "<div class='nav navbar-nav navbar-right'>"
+                                    + "<form method='post' action='/BonCommande/Deconnection'>"
+                                    + "<input type='submit' class='btn btn-danger' value='Se déconnecter'>"
+                                    + "</form>"
+                                    + "</div>");
                            }                         
                         } else {
-                            out.println("<form method='post' action='/BonCommande/Authentification'>"
+                            out.println("<form method='post' id='formCo' action='/BonCommande/Authentification'>"
                             + "<input type='submit' class='btn btn-primary pull-right' value='Se connecter'>"
                                     + "</form>");
                         }

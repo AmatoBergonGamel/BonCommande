@@ -83,8 +83,9 @@ public class Connection extends HttpServlet {
             int mdp; 
             mdp = Integer.parseInt(motDePasse); 
             int res = dao.verifAuthentification(email);
- 
-            User user = new User(email,motDePasse);
+            String name = "essai";
+            User user = (User) dao.findAllOfCustomer(mdp);
+            //  User user = new User(name,email,motDePasse);
             HttpSession UserSession = request.getSession();
             UserSession.setAttribute("utilisateur", user);
 
