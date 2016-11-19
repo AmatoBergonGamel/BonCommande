@@ -7,7 +7,12 @@
             <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/web/WEB-INF/creationcommande.jsp</file>
             <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/src/java/servlet/Deconnection.java</file>
             <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/web/WEB-INF/Connection.jsp</file>
+            <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/src/java/servlet/CreationCommande.java</file>
             <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/src/java/servlet/Authentification.java</file>
+            <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/src/java/jdbc/Commandes.java</file>
+            <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/src/java/jdbc/OrderEntity.java</file>
+            <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/src/java/servlet/VoirCommandes.java</file>
+            <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/web/WEB-INF/VoirCommandes.jsp</file>
             <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/web/WEB-INF/menu.jsp</file>
             <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/src/java/beans/User.java</file>
             <file>file:/C:/Users/nico/Documents/NetBeansProjects/BonCommande/BonCommande/web/WEB-INF/accueil.jsp</file>
