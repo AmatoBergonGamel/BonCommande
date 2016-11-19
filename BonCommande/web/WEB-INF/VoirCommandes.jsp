@@ -17,7 +17,7 @@
         
         <div>
 			<table border="1">
-				<tr><th>Code</th><th>Taux</th><th>Action</th></tr>
+				<tr><th>Customerid</th><th>quantité</th><th>productid</th></tr>
 				<c:forEach var="record" items="${requestScope.codes}">
 					<tr>
 						<td>${record.getcid()}</td>
