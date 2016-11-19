@@ -82,16 +82,16 @@ public class Connection extends HttpServlet {
             String motDePasse = request.getParameter( "password" );
             int mdp; 
             mdp = Integer.parseInt(motDePasse); 
-            int res = dao.verifAuthentification(email);
+            boolean res = dao.verifAuthentification(email,mdp);
  
             User user = new User(email,motDePasse);
             HttpSession UserSession = request.getSession();
             UserSession.setAttribute("utilisateur", user);
 
                     
-            if(res == mdp) {
-                //request.setAttribute("attemail", email);
-               // request.setAttribute("attpassword", motDePasse);
+            if(res) {
+                request.setAttribute("attemail", email);
+                request.setAttribute("attpassword", motDePasse);
                 processRequest(request, response);
             } else {
                               

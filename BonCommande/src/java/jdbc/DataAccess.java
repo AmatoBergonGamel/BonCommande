@@ -32,7 +32,7 @@ public class DataAccess {
          * @return l'identifiant correspondant au mail saisi
          * @throws SQLException 
          */
-        public int verifAuthentification(String email) throws SQLException{
+        public boolean verifAuthentification(String email, int mdp) throws SQLException{
                 
                 int result = 0;
                 String sql = "SELECT CUSTOMER_ID FROM APP.CUSTOMER WHERE EMAIL = ?";
@@ -52,7 +52,7 @@ public class DataAccess {
 		stmt.close();
 		connection.close();
                 
-                return result;
+                return result==mdp;
         }
         
         /**
