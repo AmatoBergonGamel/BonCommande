@@ -30,6 +30,12 @@
                             out.println("<form method='post' action='/BonCommande/Deconnection'>"
                                        + "<input type='submit' class='btn btn-danger pull-right' value='Se déconnecter'>"
                                        + "</form>");
+                            out.println("<form method='get' action='/BonCommande/CreationCommande'>"
+                                       + "<input type='submit' class='btn btn-danger pull-right' value='Créer une nouvelle commande'>"
+                                       + "</form>");
+                            out.println("<form method='get' action='/BonCommande/VoirCommandes'>"
+                                       + "<input type='submit' class='btn btn-danger pull-right' value='Mes commandes'>"
+                                       + "</form>");
                             out.println(user.getEmail());
                            }                         
                         } else {
