@@ -10,19 +10,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Commandes</title>
     </head>
     <body>
         <h1>Commandes</h1>
         
         <div>
 			<table border="1">
-				<tr><th>Customerid</th><th>quantité</th><th>productid</th></tr>
+				<tr><th>Customerid</th><th>quantité</th><th>productid</th><th>description</th></tr>
 				<c:forEach var="record" items="${requestScope.codes}">
 					<tr>
 						<td>${record.getcid()}</td>
-						<td>${record.getquantity()}</td>
+						<td>${record.getQuantity()}</td>
                                                 <td>${record.getpid()}</td>
+                                                <td>${record.getDescription()}</td>
 					</tr>	  		    
 				</c:forEach>  
 			</table>

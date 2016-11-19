@@ -34,7 +34,7 @@
                                        + "<input type='submit' class='btn btn-danger pull-right' value='Créer une nouvelle commande'>"
                                        + "</form>");
                             out.println("<form method='get' action='/BonCommande/VoirCommandes'>"
-                                       + "<input type='submit' class='btn btn-danger pull-right' value='Mes commandes'>"
+                                       + "<input type='submit' class='btn btn-danger pull-right' value='Commandes'>"
                                        + "</form>");
                             out.println(user.getEmail());
                            }                         

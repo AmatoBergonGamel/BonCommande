@@ -53,13 +53,15 @@ public class Commandes {
 		List<OrderEntity> result = new LinkedList<>();
 
 		String sql = "SELECT * FROM PURCHASE_ORDER";
-		try (Connection connection = myDataSource.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql)) {
+                String sql2 = "SELECT CUSTOMER_ID, PRODUCT_ID, QUANTITY, DESCRIPTION FROM PURCHASE_ORDER NATURAL JOIN PRODUCT";
+		try (Connection connection = myDataSource.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql2)) {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				int userid = rs.getInt("CUSTOMER_ID");
 				int productid = rs.getInt("PRODUCT_ID");
                                 int quantity = rs.getInt("QUANTITY");
-				OrderEntity c = new OrderEntity(userid,quantity,productid);
+                                String desc = rs.getString("DESCRIPTION");
+				OrderEntity c = new OrderEntity(userid,quantity,productid,desc);
 				result.add(c);
 			}
 		}
