@@ -24,8 +24,8 @@
 						<td>${record.getQuantity()}</td>
                                                 <td>${record.getpid()}</td>
                                                 <td>${record.getDescription()}</td>
-                                                <td>${record.getPrix()}</td>
-                                                <td>${record.getPrix()*record.getQuantity()}</td>
+                                                <td>${record.getPrix()} $</td>
+                                                <td>${record.getPrix()*record.getQuantity()} $</td>
 					</tr>	  		    
 				</c:forEach>  
 			</table>
