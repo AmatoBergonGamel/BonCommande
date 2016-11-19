@@ -52,8 +52,8 @@ public class Commandes {
 
 		List<OrderEntity> result = new LinkedList<>();
 
-		String sql = "SELECT * FROM PURCHASE_ORDER";
-                String sql2 = "SELECT CUSTOMER_ID, PRODUCT_ID, QUANTITY, DESCRIPTION FROM PURCHASE_ORDER NATURAL JOIN PRODUCT";
+		//String sql = "SELECT * FROM PURCHASE_ORDER";
+                String sql2 = "SELECT CUSTOMER_ID, PRODUCT_ID, QUANTITY, DESCRIPTION,PURCHASE_COST FROM PURCHASE_ORDER NATURAL JOIN PRODUCT";
 		try (Connection connection = myDataSource.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql2)) {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -61,7 +61,8 @@ public class Commandes {
 				int productid = rs.getInt("PRODUCT_ID");
                                 int quantity = rs.getInt("QUANTITY");
                                 String desc = rs.getString("DESCRIPTION");
-				OrderEntity c = new OrderEntity(userid,quantity,productid,desc);
+                                float prix = rs.getInt("PURCHASE_COST");
+				OrderEntity c = new OrderEntity(userid,quantity,productid,desc,prix);
 				result.add(c);
 			}
 		}
