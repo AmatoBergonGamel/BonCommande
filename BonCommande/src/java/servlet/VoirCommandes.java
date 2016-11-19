@@ -7,17 +7,22 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+import jdbc.Commandes;
+import jdbc.DataAccess;
 
 /**
  *
- * @author Anaïs
+ * @author nico
  */
-public class Deconnection extends HttpServlet {
+public class VoirCommandes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,13 +35,21 @@ public class Deconnection extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.getSession().invalidate();
-        response.sendRedirect("/BonCommande");
-        
-        
+        this.getServletContext().getRequestDispatcher("/WEB-INF/VoirCommandes.jsp").forward(request,response);
     }
 
+    
+    public DataSource getDataSource() throws SQLException {
+		org.apache.derby.jdbc.ClientDataSource ds = new org.apache.derby.jdbc.ClientDataSource();
+		ds.setDatabaseName("sample");
+		ds.setUser("app");
+		ds.setPassword("app");
+		// The host on which Network Server is running
+		ds.setServerName("localhost");
+		// port on which Network Server is listening
+		ds.setPortNumber(1527);
+		return ds;
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -49,6 +62,19 @@ public class Deconnection extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+            Commandes dao = null;
+        try {
+            dao = new Commandes(getDataSource());
+        } catch (SQLException ex) {
+            Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            request.setAttribute("codes",dao.allCommands() );
+        } catch (Exception ex) {
+            Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         processRequest(request, response);
     }
 

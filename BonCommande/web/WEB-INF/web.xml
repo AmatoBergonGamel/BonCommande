@@ -16,6 +16,14 @@
         <servlet-name>Deconnection</servlet-name>
         <servlet-class>servlet.Deconnection</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreationCommande</servlet-name>
+        <servlet-class>servlet.CreationCommande</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VoirCommandes</servlet-name>
+        <servlet-class>servlet.VoirCommandes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -49,6 +57,14 @@
     <servlet-mapping>
         <servlet-name>Deconnection</servlet-name>
         <url-pattern>/Deconnection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreationCommande</servlet-name>
+        <url-pattern>/CreationCommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VoirCommandes</servlet-name>
+        <url-pattern>/VoirCommandes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
