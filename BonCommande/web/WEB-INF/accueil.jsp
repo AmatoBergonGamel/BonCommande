@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@ include file="header.jsp" %>
+        <%@ include file="../index.html" %>
     </head>
     <body>
         <%@ include file="menu.jsp" %>
