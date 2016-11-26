@@ -35,12 +35,17 @@ public class Commandes {
          * @throws SQLException 
          */
         
-        public void ajoutCommande(int ordernum, int customerid, int productid, int quantity) throws SQLException{
+        public void ajoutCommande(int customerid, int productid, int quantity) throws SQLException{
             
-                String sql = "INSERT INTO PURCHASE_ORDER (?,?,?,?,,,,)";
+                String sql = "INSERT INTO PURCHASE_ORDER (,?,?,?,,,,)";
+                
 		Connection connection = myDataSource.getConnection();
+                
 		PreparedStatement stmt = connection.prepareStatement(sql);
-		stmt.executeQuery();
+                stmt.setInt( 1, customerid );
+                stmt.setInt( 2, productid );
+                stmt.setInt( 3, quantity );
+		stmt.executeUpdate();
 
 		stmt.close();
 		connection.close();
