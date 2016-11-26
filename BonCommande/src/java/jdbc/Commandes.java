@@ -5,10 +5,12 @@
  */
 package jdbc;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import javax.sql.DataSource;
@@ -28,6 +30,10 @@ public class Commandes {
 		this.myDataSource = dataSource;
 	}
 
+    public Commandes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
         /**
          * 
          * @param email
@@ -37,17 +43,31 @@ public class Commandes {
         
         public void ajoutCommande(int customerid, int productid, int quantity) throws SQLException{
             
-                String sql = "INSERT INTO PURCHASE_ORDER (,?,?,?,,,,)";
+                String sql = "INSERT INTO PURCHASE_ORDER (ORDER_NUM,CUSTOMER_ID,PRODUCT_ID,QUANTITY) VALUES (?,?,?,?)";
+                String sql2 = "SELECT MAX(ORDER_NUM) AS MAXI FROM PURCHASE_ORDER";
+                int order = 0;
                 
 		Connection connection = myDataSource.getConnection();
                 
-		PreparedStatement stmt = connection.prepareStatement(sql);
-                stmt.setInt( 1, customerid );
-                stmt.setInt( 2, productid );
-                stmt.setInt( 3, quantity );
+                
+                PreparedStatement stmt2 = connection.prepareStatement(sql2);
+                ResultSet rs = stmt2.executeQuery();
+                
+                if (rs.next()){
+                order = rs.getInt("MAXI")+1;
+                }
+                
+                
+                PreparedStatement stmt = connection.prepareStatement(sql);
+                stmt.setInt(1, order);
+                stmt.setInt(2, customerid );
+                stmt.setInt(3, productid );
+                stmt.setInt(4, quantity );
 		stmt.executeUpdate();
 
 		stmt.close();
+                stmt2.close();
+                rs.close();
 		connection.close();
             
             

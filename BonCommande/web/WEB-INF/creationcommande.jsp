@@ -8,14 +8,21 @@
     <body>
         <%@ include file="menu.jsp" %>
         <div>
-            <form method="post" action="creationCommande">
+            <form method="post" action="CreationCommande">
                 <fieldset>
                     <legend>Informations client</legend>
     
                     <label for="nomClient">Nom <span class="requis">*</span></label>
                     <input type="text" id="nomClient" name="nomClient" value="" size="20" maxlength="20" />
                     <br />
+                    <label for="idproduit">idproduit <span class="requis">*</span></label>
+                    <input type="text" id="idproduit" name="idproduit" value="" size="20" maxlength="20" />
+                    <br />
+                    <label for="quantité">quantité <span class="requis">*</span></label>
+                    <input type="text" id="quantité" name="quantité" value="" size="20" maxlength="20" />
+                    <br />
                     
+                    <%--
                     <label for="prenomClient">Prénom </label>
                     <input type="text" id="prenomClient" name="prenomClient" value="" size="20" maxlength="20" />
                     <br />
@@ -58,7 +65,9 @@
                     <label for="statutLivraisonCommande">Statut de la livraison</label>
                     <input type="text" id="statutLivraisonCommande" name="statutLivraisonCommande" value="" size="20" maxlength="20" />
                     <br />
+                    --%>
                 </fieldset>
+                    
                 <input type="submit" value="Valider"  />
                 <input type="reset" value="Remettre à zéro" /> <br />
             </form>

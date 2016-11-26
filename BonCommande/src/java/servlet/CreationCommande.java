@@ -7,6 +7,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,8 +71,14 @@ public class CreationCommande extends HttpServlet {
                       
             Commandes bon = new Commandes(getDataSource());
             DataAccess dao = new DataAccess(getDataSource());
+            
+            int id = dao.findIdOfCustomer(request.getParameter("nomClient"));
+            String idp = request.getParameter("idproduit");
+            String q = request.getParameter("quantité");
+            int idprod = Integer.parseInt(idp);
+            int quantity = Integer.parseInt(q);
                
-            bon.ajoutCommande(dao.findIdOfCustomer(request.getParameter("name")),0,0);
+            bon.ajoutCommande(1,980001,1);
             
             
             processRequest(request, response);

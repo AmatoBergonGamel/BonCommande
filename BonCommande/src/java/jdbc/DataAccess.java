@@ -95,23 +95,32 @@ public class DataAccess {
 
 		// Une requÃªte SQL paramÃ©trÃ©e
 		String sql = "SELECT CUSTOMER_ID FROM CUSTOMER WHERE NAME = ?";
+                String sql2 = "SELECT COUNT(CUSTOMER_ID) as nbId  FROM CUSTOMER";
 		// Ouvrir une connexion
 		Connection connection = myDataSource.getConnection();
 		// On crÃ©e un statement pour exÃ©cuter une requÃªte
 		PreparedStatement stmt = connection.prepareStatement(sql);
+                PreparedStatement stmt2 = connection.prepareStatement(sql2);
 		stmt.setString(1, identifiant);
 		
 		// Un ResultSet pour parcourir les enregistrements du rÃ©sultat
 		ResultSet rs = stmt.executeQuery();
+                ResultSet rs2 = stmt2.executeQuery();
 		if (rs.next()) { // Pas la peine de faire while, il y a 1 seul enregistrement
 			// On rÃ©cupÃ¨re les champs nÃ©cessaires de l'enregistrement courant
 			                     
                         result = rs.getInt("CUSTOMER_ID");
                         
 		}
+                
+                else{
+                    result = rs2.getInt("nbId")+1;
+                }
 		// On ferme tout
 		rs.close();
+                rs2.close();
 		stmt.close();
+                stmt2.close();
 		connection.close();
 		
 		return result;
