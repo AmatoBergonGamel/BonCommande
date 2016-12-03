@@ -5,9 +5,9 @@
  */
 package servlet;
 
+import beans.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import jdbc.Commandes;
 import jdbc.DataAccess;
@@ -52,6 +53,15 @@ public class CreationCommande extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            Commandes bons = new Commandes(getDataSource());
+            request.setAttribute("produits",bons.allsproducts());
+            request.setAttribute("compagnies",bons.allfreightcompanies());
+            
+        } catch (Exception ex) {
+            Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         processRequest(request, response);
     }
 
@@ -74,17 +84,35 @@ public class CreationCommande extends HttpServlet {
            /*
             int id = dao.findIdOfCustomer(request.getParameter("nomClient"));
             String idp = request.getParameter("idproduit");
-            String q = request.getParameter("quantité");
+            
             int idprod = Integer.parseInt(idp);
             int quantity = Integer.parseInt(q);
                */
-            bon.ajoutCommande(dao.findIdOfCustomer(request.getParameter("nomClient")),980001,1);
+                    
+            String q = request.getParameter("quantite");
+            int quantity = Integer.parseInt(q);
+            String p = request.getParameter("produit");
+            int product = Integer.parseInt(p);
+            String freightCompany = request.getParameter("compagnieLivraisonCommande");
+            
+        try {
+            request.setAttribute("codes",bon.allsproducts() );
+        } catch (Exception ex) {
+            Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                 HttpSession session = request.getSession();
+                 User user = (User) session.getAttribute("utilisateur");
+                 String id = user.getPassword();
+                 int customerid = Integer.parseInt(id);
+ 
+            bon.ajoutCommande(customerid,product, quantity, freightCompany);
             
             
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(CreationCommande.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request,response);
     }
     
     

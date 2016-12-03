@@ -5,8 +5,8 @@
  */
 package servlet;
 
+import beans.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,9 +14,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import jdbc.Commandes;
-import jdbc.DataAccess;
 
 /**
  *
@@ -63,14 +63,18 @@ public class VoirCommandes extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            Commandes dao = null;
+        Commandes dao = null;
         try {
             dao = new Commandes(getDataSource());
         } catch (SQLException ex) {
             Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            request.setAttribute("codes",dao.allCommands() );
+               HttpSession session = request.getSession();
+               User user = (User) session.getAttribute("utilisateur");
+               String id = user.getPassword();
+               int customerid = Integer.parseInt(id);
+            request.setAttribute("codes",dao.CommandsUser(customerid));
         } catch (Exception ex) {
             Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
         }

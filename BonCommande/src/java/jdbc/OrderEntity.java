@@ -12,7 +12,7 @@ package jdbc;
 public class OrderEntity {
     
     private int customerid,quantity,productid;
-    private String description;
+    private String description, company;
     private float prix;
             
     public OrderEntity(int c, int q, int p){
@@ -42,6 +42,19 @@ public class OrderEntity {
         
     }
     
+        public OrderEntity(int p, int q, String d,float pr){
+        
+        productid=p;
+        quantity=q;
+        description=d;
+        prix=pr;
+        
+    }
+        
+            public OrderEntity(String c){
+                   company = c;
+        
+            }
     public int getcid(){
         
         return customerid;
@@ -63,6 +76,12 @@ public class OrderEntity {
     public String getDescription(){
         
         return description;
+        
+    }
+    
+        public String getCompany(){
+        
+        return company;
         
     }
     

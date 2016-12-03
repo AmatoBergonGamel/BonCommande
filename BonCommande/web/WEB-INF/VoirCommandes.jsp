@@ -14,6 +14,13 @@
     </head>
     <body>
         <%@ include file="menu.jsp" %>
+        
+          <% if (session.getAttribute("utilisateur") != null) {
+                User user = (User) session.getAttribute("utilisateur");
+
+            }
+          
+        %>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

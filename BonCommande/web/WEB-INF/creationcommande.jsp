@@ -1,5 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,107 +8,58 @@
     </head>
     <body>
         <%@ include file="menu.jsp" %>
-        
+
         <% if (session.getAttribute("utilisateur") != null) {
-                        User user = (User) session.getAttribute("utilisateur");
+                User user = (User) session.getAttribute("utilisateur");
 
             }
+          
         %>
         <div class=row">
-            <div class="col-md-4 col-md-offset-2"> 
-                <form method="post" action="creationCommande">
+            <div class="col-md-8 col-md-offset-2"> 
+                <form method="post" action="CreerBonCommande">
+
+
                     <fieldset>
-                        <legend>Informations client</legend>
+                        <legend>Sléctionnez un produit pour votre commande</legend>
                         <div class="form-group row">
-                            <label for="nomClient" class="col-md-3 col-form-label">Nom <span class="requis">*</span></label>
+                            <label for="produitCommande" class="col-md-3 col-form-label">Produit<span class="requis">*</span></label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="nomClient" name="nomClient" value=""/>
+                                <select id="produit" name="produit" class="form-control">
+                                    <c:forEach var="record" items="${requestScope.produits}">
+                                        <option value="${record.getpid()}">${record.getDescription()} (${record.getPrix()} €)</option>
+                                    </c:forEach> 
+                                </select>
                             </div>
                             <br />
                         </div>
                         <div class="form-group row">
-                            <label for="prenomClient" class="col-md-3 col-form-label">Prénom </label>
+                            <label for="quantite" class="col-md-3 col-form-label">Quantité <span class="requis">*</span></label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="prenomClient" name="prenomClient" value="" />
+                                <input type="number" class="form-control" id="quantite" name="quantite" value=""/>
                             </div>
                             <br />
                         </div>
+                                                
                         <div class="form-group row">
-                            <label for="adresseClient" class="col-md-3 col-form-label">Adresse de livraison <span class="requis">*</span></label>
+                            <label for="compagnieLivraisonCommande" class="col-md-3 col-form-label">Compagnie de livraison</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="adresseClient" name="adresseClient" value=""/>
-                            </div>
-                            <br />
-                        </div>
-                        <div class="form-group row">
-                            <label for="telephoneClient" class="col-md-3 col-form-label">Numéro de téléphone <span class="requis">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" id="telephoneClient" name="telephoneClient" value=""/>
-                            </div>
-                            <br />
-                        </div>
-                        <div class="form-group row">
-                            <label for="emailClient" class="col-md-3 col-form-label">Adresse email</label>
-                            <div class="col-md-9">
-                                <input type="email" class="form-control" id="emailClient" name="emailClient" value=""/>
+                                <select id="compagnieLivraisonCommande" name="compagnieLivraisonCommande" class="form-control">
+                                    <c:forEach var="record" items="${requestScope.compagnies}">
+                                        <option value="${record.getCompany()}">${record.getCompany()}</option>
+                                    </c:forEach> 
+                                </select>
                             </div>
                             <br />
                         </div>
                     </fieldset>
             </div>
-            <div class="col-md-4"> 
-                <fieldset>
-                    <legend>Informations commande</legend>
-                    <div class="form-group row">
-                        <label for="dateCommande" class="col-md-3 col-form-label">Date <span class="requis">*</span></label>
-                        <div class="col-md-9">
-                            <input type="date" class="form-control" id="dateCommande" name="dateCommande" value=""/>
-                        </div>
-                        <br />
-                    </div>
-                    <div class="form-group row">
-                        <label for="montantCommande" class="col-md-3 col-form-label">Montant <span class="requis">*</span></label>
-                        <div class="col-md-9">
-                            <input type="number" id="montantCommande" name="montantCommande" value="" class="form-control" />
-                        </div>
-                        <br />
-                    </div>
-                    <div class="form-group row">
-                        <label for="modePaiementCommande" class="col-md-3 col-form-label">Mode de paiement <span class="requis">*</span></label>
-                        <div class="col-md-9">
-                            <input type="text" id="modePaiementCommande" name="modePaiementCommande" value="" class="form-control" />
-                        </div>
-                        <br />
-                    </div>
-                    <div class="form-group row">
-                        <label for="statutPaiementCommande" class="col-md-3 col-form-label">Statut du paiement</label>
-                        <div class="col-md-9">
-                            <input type="text" id="statutPaiementCommande" name="statutPaiementCommande" value="" class="form-control" />
-                        </div>
-                        <br />
-                    </div>
-                    <div class="form-group row">
-                        <label for="modeLivraisonCommande" class="col-md-3 col-form-label">Mode de livraison <span class="requis">*</span></label>
-                        <div class="col-md-9">
-                            <input type="text" id="modeLivraisonCommande" name="modeLivraisonCommande" value="" class="form-control" />
-                        </div>
-                        <br />
-                    </div>
-                    <div class="form-group row">
-                        <label for="statutLivraisonCommande" class="col-md-3 col-form-label">Statut de la livraison</label>
-                        <div class="col-md-9">
-                            <input type="text" id="statutLivraisonCommande" name="statutLivraisonCommande" value="" class="form-control"/>
-                        </div>
-                        <br />
-                    </div>
-                </fieldset>
-            </div>
             <div  class="col-md-8 col-md-offset-2">
                 <input type="submit" class="btn btn-primary" value="Valider"  />
                 <input type="reset" class="btn btn-warning" value="Remettre à zéro" /> <br />
             </div>
-                </form>
-          
-        </div>
-    </body>
+        </form>
+
+    </div>
+</body>
 </html>
