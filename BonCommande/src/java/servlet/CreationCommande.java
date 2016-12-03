@@ -7,10 +7,17 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import jdbc.Commandes;
+import jdbc.DataAccess;
 
 /**
  *
@@ -60,10 +67,40 @@ public class CreationCommande extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-        processRequest(request, response);
+        try {
+                      
+            Commandes bon = new Commandes(getDataSource());
+            DataAccess dao = new DataAccess(getDataSource());
+            
+            int id = dao.findIdOfCustomer(request.getParameter("nomClient"));
+            String idp = request.getParameter("idproduit");
+            String q = request.getParameter("quantité");
+            int idprod = Integer.parseInt(idp);
+            int quantity = Integer.parseInt(q);
+               
+            bon.ajoutCommande(1,980001,1);
+            
+            
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(CreationCommande.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
+    
+    
+    
+    
+public DataSource getDataSource() throws SQLException {
+		org.apache.derby.jdbc.ClientDataSource ds = new org.apache.derby.jdbc.ClientDataSource();
+		ds.setDatabaseName("sample");
+		ds.setUser("app");
+		ds.setPassword("app");
+		// The host on which Network Server is running
+		ds.setServerName("localhost");
+		// port on which Network Server is listening
+		ds.setPortNumber(1527);
+		return ds;
+    }
     /**
      * Returns a short description of the servlet.
      *

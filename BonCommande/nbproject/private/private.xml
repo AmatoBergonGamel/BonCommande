@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/index.html</file>
-            <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/accueil.jsp</file>
+            <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/VoirCommandes.jsp</file>
+            <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/creationclient.jsp</file>
             <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/header.jsp</file>
             <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/Style/style.css</file>
             <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/menu.jsp</file>
+            <file>file:/C:/Users/Anaïs/Documents/GitHub/BonCommande/BonCommande/web/WEB-INF/creationcommande.jsp</file>
         </group>
     </open-files>
 </project-private>
