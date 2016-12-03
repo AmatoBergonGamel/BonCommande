@@ -35,18 +35,43 @@ public class Commandes {
      * @return l'identifiant correspondant au mail saisi
      * @throws SQLException
      */
-    public void ajoutCommande(int ordernum, int customerid, int productid, int quantity) throws SQLException {
-
-        String sql = "INSERT INTO PURCHASE_ORDER (?,?,?,?,,,,)";
-        Connection connection = myDataSource.getConnection();
-        PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.executeQuery();
-
-        stmt.close();
-        connection.close();
-
+    public void ajoutCommande(int customerid, int productid, int quantity) throws SQLException{
+              		              
+                 String sql = "INSERT INTO PURCHASE_ORDER (ORDER_NUM,CUSTOMER_ID,PRODUCT_ID,QUANTITY) VALUES (?,?,?,?)";
+                 String sql2 = "SELECT MAX(ORDER_NUM) AS MAXI FROM PURCHASE_ORDER";
+                 int order = 0;
+                  		                  
+  		Connection connection = myDataSource.getConnection();		  		
+                  		                  
+ 				                 
+                 PreparedStatement stmt2 = connection.prepareStatement(sql2);
+                 		                 
+                 ResultSet rs = stmt2.executeQuery();
+                 		                 
+                 if (rs.next()){
+                 order = rs.getInt("MAXI")+1;
+                 }
+                 
+                 
+                 PreparedStatement stmt = connection.prepareStatement(sql);
+                 stmt.setInt(1, order);
+                 stmt.setInt(2, customerid );
+                 stmt.setInt(3, productid );
+                 stmt.setInt(4, quantity );
+  		stmt.executeUpdate();		  		
+  		  
+  		stmt.close();		  		
+                 stmt2.close();
+                 rs.close();
+  		connection.close();
+                
     }
-
+              		              
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public List<OrderEntity> allCommands() throws Exception {
 
         List<OrderEntity> result = new LinkedList<>();

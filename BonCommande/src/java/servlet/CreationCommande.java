@@ -71,14 +71,14 @@ public class CreationCommande extends HttpServlet {
                       
             Commandes bon = new Commandes(getDataSource());
             DataAccess dao = new DataAccess(getDataSource());
-            
+           /*
             int id = dao.findIdOfCustomer(request.getParameter("nomClient"));
             String idp = request.getParameter("idproduit");
             String q = request.getParameter("quantité");
             int idprod = Integer.parseInt(idp);
             int quantity = Integer.parseInt(q);
-               
-            bon.ajoutCommande(1,980001,1);
+               */
+            bon.ajoutCommande(dao.findIdOfCustomer(request.getParameter("nomClient")),980001,1);
             
             
             processRequest(request, response);

@@ -95,7 +95,7 @@ public class DataAccess {
 
 		// Une requÃªte SQL paramÃ©trÃ©e
 		String sql = "SELECT CUSTOMER_ID FROM CUSTOMER WHERE NAME = ?";
-                String sql2 = "SELECT COUNT(CUSTOMER_ID) as nbId  FROM CUSTOMER";
+                String sql2 = "SELECT MAX(CUSTOMER_ID) as nbId  FROM CUSTOMER";
 		// Ouvrir une connexion
 		Connection connection = myDataSource.getConnection();
 		// On crÃ©e un statement pour exÃ©cuter une requÃªte
@@ -113,8 +113,11 @@ public class DataAccess {
                         
 		}
                 
-                else{
+                else{ 
+                    if(rs2.next()){
+                   
                     result = rs2.getInt("nbId")+1;
+                }
                 }
 		// On ferme tout
 		rs.close();
