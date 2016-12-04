@@ -14,28 +14,29 @@
     </head>
     <body>
         <%@ include file="menu.jsp" %>
-        
-          <% if (session.getAttribute("utilisateur") != null) {
+
+        <% if (session.getAttribute("utilisateur") != null) {
                 User user = (User) session.getAttribute("utilisateur");
 
             }
-          
+
         %>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h1>Commandes</h1>
+                <h1>Vos Commandes</h1>
                 <table class="table table-striped">
-                    <thead><tr><th>Customerid</th><th>quantité</th><th>productid</th><th>description</th><th>prix unitaire</th><th>prix total</th></tr></thead>
-                            <c:forEach var="record" items="${requestScope.codes}">
-                        <tbody>    <tr>
-                            <th class"row">${record.getcid()}</th>
-                            <td>${record.getQuantity()}</td>
-                            <td>${record.getpid()}</td>
-                            <td>${record.getDescription()}</td>
-                            <td>${record.getPrix()} $</td>
-                            <td>${record.getPrix()*record.getQuantity()} $</td>
-                        </tr>
+                    <thead><tr><th>Description</th><th>Quantité</th><th>Prix unitaire</th><th>Prix total</th><th>Modifier</th><th>Supprimer</th></tr></thead>
+                                <c:forEach var="record" items="${requestScope.codes}">
+                        <tbody>  
+                            <tr>
+                                <td>${record.getDescription()}</td>
+                                <td>${record.getQuantity()}</td>              
+                                <td>${record.getPrix()} $</td>
+                                <td>${record.getPrix()*record.getQuantity()} $</td>
+                                <td><form method="post" action="ModifierBonCommande"><input type='submit' class='btn btn-warning' value='Modifier'></form></td>
+                                <td><form method="post" action="SupprimerBonCommande"><input type='submit' class='btn btn-danger' value='Supprimer'></form></td>
+                            </tr>
                         </tbody>
                     </c:forEach>  
                 </table>

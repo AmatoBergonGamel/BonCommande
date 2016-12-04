@@ -28,6 +28,10 @@
         <servlet-name>CreerBonCommande</servlet-name>
         <servlet-class>servlet.CreerBonCommande</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SupprimerBonCommande</servlet-name>
+        <servlet-class>servlet.SupprimerBonCommande</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -73,6 +77,10 @@
     <servlet-mapping>
         <servlet-name>CreerBonCommande</servlet-name>
         <url-pattern>/CreerBonCommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SupprimerBonCommande</servlet-name>
+        <url-pattern>/SupprimerBonCommande</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

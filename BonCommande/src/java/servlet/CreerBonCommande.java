@@ -37,7 +37,7 @@ public class CreerBonCommande extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                    this.getServletContext().getRequestDispatcher("/WEB-INF/VoirCommandes.jsp").forward(request,response);
+                    this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request,response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -109,7 +109,9 @@ public class CreerBonCommande extends HttpServlet {
                 String id = request.getParameter("id_costumer"); // recupere l'id d"un input hidden du formulaire
                 int customerid = Integer.parseInt(id); 
                 bon.ajoutCommande(customerid, product, quantity, freightCompany); // recupere toutes ses valeurs puis plante durant la fonction
-               
+                
+                String message = "Votre commande a bien été créée.";
+                request.setAttribute( "message", message );
                processRequest(request, response);
                 
                // this.getServletContext().getRequestDispatcher("/WEB-INF/VoirCommandes.jsp").forward(request, response);

@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.sql.DataSource;
 
+
 /**
  *
  * @author Anaïs
@@ -38,7 +39,7 @@ public class Commandes {
      */
     public void ajoutCommande(int customerid, int productid, int quantity, String company) throws SQLException {
 
-        String sql = "INSERT INTO PURCHASE_ORDER (ORDER_NUM,CUSTOMER_ID,PRODUCT_ID,QUANTITY, SHIPPING_COST, SALES_DATE, SHIPPING_DATE, FREIGHT_COMPANY) VALUES (?,?,?,?, ?, DATE(NOW()), DATE(NOW()), ?)";
+        String sql = "INSERT INTO PURCHASE_ORDER (ORDER_NUM,CUSTOMER_ID,PRODUCT_ID,QUANTITY, SHIPPING_COST, SALES_DATE, SHIPPING_DATE, FREIGHT_COMPANY) VALUES (?,?,?,?, ?, ?, ?, ?)";
         String sql2 = "SELECT MAX(ORDER_NUM) AS MAXI FROM PURCHASE_ORDER";
         int order = 0;
 
@@ -48,7 +49,10 @@ public class Commandes {
         PreparedStatement stmt2 = connection.prepareStatement(sql2);
 
         ResultSet rs = stmt2.executeQuery();
-
+        
+        java.util.Date utilNow = new java.util.Date();
+        java.sql.Date sqlNow = new java.sql.Date(utilNow.getTime());
+        
         if (rs.next()) {
             order = rs.getInt("MAXI") + 1;
         }
@@ -58,7 +62,9 @@ public class Commandes {
         stmt.setInt(3, productid);
         stmt.setInt(4, quantity);
         stmt.setFloat(5, (float) 10.00);
-        stmt.setString(6, company);
+        stmt.setDate(6, sqlNow);
+        stmt.setDate(7, sqlNow);
+        stmt.setString(8, company);
         stmt.executeUpdate();
 
         stmt.close();

@@ -34,12 +34,19 @@
                                         + "<p>Veuillez vous connecter, ou vous inscrire si vous ne possédez pas de compte utilisateur chez nous.</p>"
                                         + "</div>");
                     }
+                    
+                    String message = (String) request.getAttribute("message");
+                    if(message != null) {
+                        out.println("<div class='alert alert-success col-md-8 col-md-offset-2' role='alert'>"
+                                + message
+                                + "</DIV>");
+                
+                    }
                 %>
             <div class="col-md-8 col-md-offset-2">
                  
                 <br/><a href="/BonCommande/CreationClient">S'inscrire</a><br/>
-                <a href="https://openclassrooms.com/courses/creez-votre-application-web-avec-java-ee" target="_blank">voici un tuto open classroom très complet sur java ee</a><br>
-                <p>CSS encore moche, à arranger plus tard</p>
+                
                
             </div>
         </div>

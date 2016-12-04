@@ -30,7 +30,7 @@
                                     + "aria-haspopup='true' aria-expanded='false'>Bon de Commande<span class='caret'></span></a>"
                                     + "<ul class='dropdown-menu'>"
                                     + "<li><a href='/BonCommande/CreationCommande'>Créer un bon de commande</a></li>"
-                                    + "<li><a href='/BonCommande/VoirCommandes'>Voir vos bons de commande</a></li>"
+                                    + "<li><a href='/BonCommande/VoirCommandes'>Voir vos bons de commande</a></li>"                       
                                     + "</ul></li></ul>"
                                     + "</div></div>");
 
