@@ -102,16 +102,17 @@ public class Commandes {
         List<OrderEntity> result = new LinkedList<>();
 
         //String sql = "SELECT * FROM PURCHASE_ORDER";
-        String sql2 = "SELECT CUSTOMER_ID, PRODUCT_ID, QUANTITY, DESCRIPTION,PURCHASE_COST FROM PURCHASE_ORDER NATURAL JOIN PRODUCT";
+        String sql2 = "SELECT ORDER_NUM, CUSTOMER_ID, PRODUCT_ID, QUANTITY, DESCRIPTION,PURCHASE_COST FROM PURCHASE_ORDER NATURAL JOIN PRODUCT";
         try (Connection connection = myDataSource.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql2)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                int entityid = rs.getInt("ORDER_NUM");
                 int userid = rs.getInt("CUSTOMER_ID");
                 int productid = rs.getInt("PRODUCT_ID");
                 int quantity = rs.getInt("QUANTITY");
                 String desc = rs.getString("DESCRIPTION");
                 float prix = rs.getInt("PURCHASE_COST");
-                OrderEntity c = new OrderEntity(userid, quantity, productid, desc, prix);
+                OrderEntity c = new OrderEntity(entityid, userid, quantity, productid, desc, prix);
                 result.add(c);
             }
         }
@@ -127,17 +128,18 @@ public class Commandes {
         List<OrderEntity> result = new LinkedList<>();
 
         //String sql = "SELECT * FROM PURCHASE_ORDER";
-        String sql2 = "SELECT CUSTOMER_ID, PRODUCT_ID, QUANTITY, DESCRIPTION,PURCHASE_COST FROM PURCHASE_ORDER NATURAL JOIN PRODUCT WHERE CUSTOMER_ID = ?";
+        String sql2 = "SELECT ORDER_NUM, CUSTOMER_ID, PRODUCT_ID, QUANTITY, DESCRIPTION,PURCHASE_COST FROM PURCHASE_ORDER NATURAL JOIN PRODUCT WHERE CUSTOMER_ID = ?";
         try (Connection connection = myDataSource.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql2)) {
             stmt.setInt(1, customer_id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                int entityid = rs.getInt("ORDER_NUM");
                 int userid = rs.getInt("CUSTOMER_ID");
                 int productid = rs.getInt("PRODUCT_ID");
                 int quantity = rs.getInt("QUANTITY");
                 String desc = rs.getString("DESCRIPTION");
                 float prix = rs.getInt("PURCHASE_COST");
-                OrderEntity c = new OrderEntity(userid, quantity, productid, desc, prix);
+                OrderEntity c = new OrderEntity(entityid, userid, quantity, productid, desc, prix);
                 result.add(c);
             }
         }
