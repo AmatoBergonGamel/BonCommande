@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sql.DataSource;
 
 
@@ -71,6 +73,22 @@ public class Commandes {
         stmt2.close();
         rs.close();
         connection.close();
+        
+    }
+    
+    public void supprimerCommande(int order){
+        
+        String sql = "DELETE FROM PURCHASE_ORDER WHERE ORDER_NUM = ?";
+        
+        try {
+            
+            Connection connection = myDataSource.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Commandes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
