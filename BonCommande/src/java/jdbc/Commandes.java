@@ -84,6 +84,7 @@ public class Commandes {
             
             Connection connection = myDataSource.getConnection();
             PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, order);
             stmt.executeUpdate();
             
         } catch (SQLException ex) {
