@@ -76,43 +76,7 @@ public class CreationCommande extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        try {
-                      
-            Commandes bon = new Commandes(getDataSource());
-            DataAccess dao = new DataAccess(getDataSource());
-           /*
-            int id = dao.findIdOfCustomer(request.getParameter("nomClient"));
-            String idp = request.getParameter("idproduit");
-            
-            int idprod = Integer.parseInt(idp);
-            int quantity = Integer.parseInt(q);
-               */
-                    
-            String q = request.getParameter("quantite");
-            int quantity = Integer.parseInt(q);
-            String p = request.getParameter("produit");
-            int product = Integer.parseInt(p);
-            String freightCompany = request.getParameter("compagnieLivraisonCommande");
-            
-        try {
-            request.setAttribute("codes",bon.allsproducts() );
-        } catch (Exception ex) {
-            Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                 HttpSession session = request.getSession();
-                 User user = (User) session.getAttribute("utilisateur");
-                 String id = user.getPassword();
-                 int customerid = Integer.parseInt(id);
- 
-            bon.ajoutCommande(customerid,product, quantity, freightCompany);
-            
-            
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(CreationCommande.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request,response);
+
     }
     
     

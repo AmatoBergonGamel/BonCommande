@@ -9,11 +9,7 @@
     <body>
         <%@ include file="menu.jsp" %>
 
-        <% if (session.getAttribute("utilisateur") != null) {
-                User user = (User) session.getAttribute("utilisateur");
-
-            }
-          
+        <% 
         %>
         <div class=row">
             <div class="col-md-8 col-md-offset-2"> 
@@ -55,6 +51,12 @@
                     </fieldset>
             </div>
             <div  class="col-md-8 col-md-offset-2">
+                <%
+                    if (session.getAttribute("utilisateur") != null) {
+                            User user = (User) session.getAttribute("utilisateur");
+                            out.println("<input type='hidden' id='id_costumer' name='id_costumer' value='"+user.getPassword()+"'/>");
+                    }
+                %>
                 <input type="submit" class="btn btn-primary" value="Valider"  />
                 <input type="reset" class="btn btn-warning" value="Remettre à zéro" /> <br />
             </div>

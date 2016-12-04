@@ -24,6 +24,10 @@
         <servlet-name>VoirCommandes</servlet-name>
         <servlet-class>servlet.VoirCommandes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreerBonCommande</servlet-name>
+        <servlet-class>servlet.CreerBonCommande</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -65,6 +69,10 @@
     <servlet-mapping>
         <servlet-name>VoirCommandes</servlet-name>
         <url-pattern>/VoirCommandes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreerBonCommande</servlet-name>
+        <url-pattern>/CreerBonCommande</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
