@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Anaïs
  */
 @WebServlet(name = "Accueil", urlPatterns = {"/"})
+// cette classe renvoie à la page d'accueil, utilisée plusieurs fois dans l'application.
 public class Accueil extends HttpServlet {
 
     /**

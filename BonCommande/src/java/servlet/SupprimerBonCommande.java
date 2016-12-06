@@ -77,16 +77,18 @@ public class SupprimerBonCommande extends HttpServlet {
         
         try {
             
+            // recupere l'id du bon à supprimer
             Commandes bon = new Commandes(getDataSource());
            
             String order_num = request.getParameter("num_order");
             int order_num2 = Integer.parseInt(order_num); 
-            
+            // supprime le bon de commande
             bon.supprimerCommande(order_num2);
             
             String message = "Votre commande a bien été supprimée.";
             request.setAttribute( "message", message );
             request.setAttribute( "test", order_num );
+            // renvoie a l'accueil
             processRequest(request, response);
             
             

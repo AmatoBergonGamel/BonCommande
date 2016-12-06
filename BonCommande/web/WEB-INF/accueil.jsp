@@ -32,6 +32,7 @@
                                         + "<p><strong>Attention :</strong> Vous n'êtes pas connecté.</p>"
                                         + "<p>Vous ne pouvez pas accédez à toutes les fonctionnalités de l'application</p>"
                                         + "<p>Veuillez vous connecter, ou vous inscrire si vous ne possédez pas de compte utilisateur chez nous.</p>"
+                                        + "<br/><a href='/BonCommande/CreationClient'>S'inscrire</a><br/>"
                                         + "</div>");
                     }
                     
@@ -45,12 +46,7 @@
                     
 
                 %>
-            <div class="col-md-8 col-md-offset-2">
-                 
-                <br/><a href="/BonCommande/CreationClient">S'inscrire</a><br/>
-                
-               
-            </div>
+            
         </div>
     </body>
 </html>

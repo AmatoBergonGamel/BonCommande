@@ -82,15 +82,9 @@ public class CreerBonCommande extends HttpServlet {
             try {
                 
                 Commandes bon = new Commandes(getDataSource());
+                
                 DataAccess dao = new DataAccess(getDataSource());
-                /*
-                int id = dao.findIdOfCustomer(request.getParameter("nomClient"));
-                String idp = request.getParameter("idproduit");
-                
-                int idprod = Integer.parseInt(idp);
-                int quantity = Integer.parseInt(q);
-                */
-                
+                // recupere les valeurs du formulaire                
                 String q = request.getParameter("quantite");
                 int quantity = Integer.parseInt(q);
                 String p = request.getParameter("produit");
@@ -103,12 +97,15 @@ public class CreerBonCommande extends HttpServlet {
                     Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
+                // recuperer le user actuel
                 HttpSession session = request.getSession();
                 User user = (User) session.getAttribute("utilisateur");
 
                 String id = request.getParameter("id_costumer"); // recupere l'id d"un input hidden du formulaire
                 int customerid = Integer.parseInt(id); 
-                bon.ajoutCommande(customerid, product, quantity, freightCompany); // recupere toutes ses valeurs puis plante durant la fonction
+                
+                // creer le bon de commande
+                bon.ajoutCommande(customerid, product, quantity, freightCompany); 
                 
                 String message = "Votre commande a bien été créée.";
                 request.setAttribute( "message", message );

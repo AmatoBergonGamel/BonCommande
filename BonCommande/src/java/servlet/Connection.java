@@ -75,22 +75,24 @@ public class Connection extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            // Creer le DAO avec sa source de donnÃ©es
+            // Creer le DAO avec sa source de donnees
             DataAccess dao = new DataAccess(getDataSource());
             
+            // on recupere les valeurs du formulaire de connection
             String email = request.getParameter( "email" );
             String motDePasse = request.getParameter( "password" );
             int mdp; 
             mdp = Integer.parseInt(motDePasse); 
-
+            
+            // verifie si l'email et le mdp sont valides
             boolean res = dao.verifAuthentification(email,mdp);
                     
             if(res) {
                 request.setAttribute("attemail", email);
                 request.setAttribute("attpassword", motDePasse);
                 User user = (User) dao.findAllOfCustomer(mdp);
-              //  User user = new User(email,motDePasse);
-                HttpSession UserSession = request.getSession();
+
+                HttpSession UserSession = request.getSession(); // creer la session utilisateur
                 UserSession.setAttribute("utilisateur", user);
                 processRequest(request, response);
             } else {

@@ -53,6 +53,8 @@ public class CreationCommande extends HttpServlet {
             throws ServletException, IOException {
         try {
             Commandes bons = new Commandes(getDataSource());
+            // recupere la liste des produits et des companiges de livraison de la BDD pour toutes les afficher dans un select
+            // dans le formulaire de création de bons de commande
             request.setAttribute("produits",bons.allsproducts());
             request.setAttribute("compagnies",bons.allfreightcompanies());
             
