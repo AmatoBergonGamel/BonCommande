@@ -34,12 +34,13 @@
                                 <td>${record.getQuantity()}</td>              
                                 <td>${record.getPrix()} $</td>
                                 <td>${record.getPrix()*record.getQuantity()} $</td>
-                                <td><form method="post" action="ModifierBonCommande">
+                                <td><form method="post" action="ModificationBonCommande">
+                                        <input type="hidden" name="num_order" id="num_order" value="${record.getoid()}">
                                         <input type='submit' class='btn btn-warning' value='Modifier'>
                                     </form>
                                 </td>
                                 <td><form method="post" action="SupprimerBonCommande">
-                                        <input type="hidden" name="num_order" value="${record.getoid()}">
+                                        <input type="hidden" name="num_order" id="num_order" value="${record.getoid()}">
                                         <input type='submit' class='btn btn-danger' value='Supprimer'>
                                     </form>
                                     </td>

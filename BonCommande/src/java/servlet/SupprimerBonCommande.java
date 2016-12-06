@@ -86,7 +86,7 @@ public class SupprimerBonCommande extends HttpServlet {
             
             String message = "Votre commande a bien été supprimée.";
             request.setAttribute( "message", message );
-            
+            request.setAttribute( "test", order_num );
             processRequest(request, response);
             
             

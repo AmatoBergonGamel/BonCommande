@@ -16,7 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 
-
 /**
  *
  * @author Anaïs
@@ -51,10 +50,10 @@ public class Commandes {
         PreparedStatement stmt2 = connection.prepareStatement(sql2);
 
         ResultSet rs = stmt2.executeQuery();
-        
+
         java.util.Date utilNow = new java.util.Date();
         java.sql.Date sqlNow = new java.sql.Date(utilNow.getTime());
-        
+
         if (rs.next()) {
             order = rs.getInt("MAXI") + 1;
         }
@@ -73,24 +72,78 @@ public class Commandes {
         stmt2.close();
         rs.close();
         connection.close();
-        
+
     }
-    
-    public void supprimerCommande(int order){
-        
+/**
+     *
+     * @param order_num
+     * @param quantity
+     * @param company
+     * @return l'identifiant correspondant au mail saisi
+     * @throws SQLException
+     */
+    public void modifierCommande(int order_num, int product_id, int quantity, String company) throws SQLException {
+
+        String sql = "UPDATE PURCHASE_ORDER SET PRODUCT_ID = ? , QUANTITY = ?, SHIPPING_COST = ?, SALES_DATE =?, SHIPPING_DATE =? , FREIGHT_COMPANY =? WHERE ORDER_NUM = ?";
+       
+        Connection connection = myDataSource.getConnection();
+
+        java.util.Date utilNow = new java.util.Date();
+        java.sql.Date sqlNow = new java.sql.Date(utilNow.getTime());
+
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setInt(1, product_id);
+        stmt.setInt(2, quantity);
+        stmt.setFloat(3, (float) 10.00);
+        stmt.setDate(4, sqlNow);
+        stmt.setDate(5, sqlNow);
+        stmt.setString(6, company);
+        stmt.setInt(7, order_num);
+        stmt.executeUpdate();
+
+        stmt.close();
+        connection.close();
+
+    }
+    public void supprimerCommande(int order) {
+
         String sql = "DELETE FROM PURCHASE_ORDER WHERE ORDER_NUM = ?";
-        
+
         try {
-            
+
             Connection connection = myDataSource.getConnection();
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, order);
             stmt.executeUpdate();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Commandes.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
+    }
+
+    /*
+    Recupere une commande de par son identifiant
+     */
+    public OrderEntity recupererCommande(int order) throws SQLException {
+
+        String sql = "SELECT ORDER_NUM, CUSTOMER_ID, PURCHASE_ORDER.PRODUCT_ID, QUANTITY, DESCRIPTION, PURCHASE_COST FROM PURCHASE_ORDER, PRODUCT WHERE ORDER_NUM = ?";
+
+        Connection connection = myDataSource.getConnection();
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setInt(1, order);
+        ResultSet rs = stmt.executeQuery();
+
+        int entityid = rs.getInt("ORDER_NUM");
+        int userid = rs.getInt("CUSTOMER_ID");
+        int productid = rs.getInt("PRODUCT_ID");
+        int quantity = rs.getInt("QUANTITY");
+        String desc = rs.getString("DESCRIPTION");
+        float prix = rs.getInt("PURCHASE_COST");
+
+        OrderEntity commande = new OrderEntity(entityid, userid, quantity, productid, desc, prix);
+
+        return commande;
     }
 
     /**

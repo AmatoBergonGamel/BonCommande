@@ -32,6 +32,14 @@
         <servlet-name>SupprimerBonCommande</servlet-name>
         <servlet-class>servlet.SupprimerBonCommande</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificationBonCommande</servlet-name>
+        <servlet-class>servlet.ModificationBonCommande</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModifierBonCommande</servlet-name>
+        <servlet-class>servlet.ModifierBonCommande</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -81,6 +89,14 @@
     <servlet-mapping>
         <servlet-name>SupprimerBonCommande</servlet-name>
         <url-pattern>/SupprimerBonCommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificationBonCommande</servlet-name>
+        <url-pattern>/ModificationBonCommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifierBonCommande</servlet-name>
+        <url-pattern>/ModifierBonCommande</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
