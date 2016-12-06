@@ -16,11 +16,14 @@
 			var data = google.visualization.arrayToDataTable(dataArray);
 			var options = {
 				title: 'Ventes par client',
-				is3D: true
+				//is3D: true,
+                                pieHole: 0.5
+
 			};
 			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 			chart.draw(data, options);
 		}
+                
 
 		// Afficher les ventes par client
 		function doAjax() {
