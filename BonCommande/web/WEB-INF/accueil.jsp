@@ -40,21 +40,10 @@
                     if(message != null) {
                         out.println("<div class='alert alert-success col-md-8 col-md-offset-2' role='alert'>"
                                 + message
-                                + "</DIV>");
-                
+                                + "</DIV>");                
                     }
                     
-
                 %>
-
-            <div class="col-md-8 col-md-offset-2">
-                 
-                
-                <br/><a href="/BonCommande/googlePieChart.jsp">statistiques</a><br/>
-                
-               
-            </div>
-
         </div>
     </body>
 </html>

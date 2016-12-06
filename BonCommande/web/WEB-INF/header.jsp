@@ -20,5 +20,49 @@
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+        <!-- On charge l'API Google -->
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+		google.load("visualization", "1", {packages: ["corechart"]});
 
+		// Après le chargement de la page, on fait l'appel AJAX
+		google.setOnLoadCallback(doAjax);
+		
+		function drawChart(dataArray) {
+			var data = google.visualization.arrayToDataTable(dataArray);
+			var options = {
+				title: 'Ventes par client',
+				//is3D: true,
+                                pieHole: 0.5
+
+			};
+			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+			chart.draw(data, options);
+		}
+                
+
+		// Afficher les ventes par client
+		function doAjax() {
+			$.ajax({
+				url: "salesByCustomer",
+				dataType: "json",
+				success: // La fonction qui traite les résultats
+					function (result) {
+						// On reformate le résultat comme un tableau
+						var chartData = [];
+						// On met le descriptif des données
+						chartData.push(["Client", "Ventes"]);
+						for(var client in result) {
+							chartData.push([client, result[client]]);
+						}
+						// On dessine le graphique
+						drawChart(chartData);
+					}
+				
+			});
+		}	
+	
+	</script>
 </head>

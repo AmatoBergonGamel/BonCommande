@@ -32,8 +32,15 @@
                                     + "<li><a href='/BonCommande/CreationCommande'>Créer un bon de commande</a></li>"
                                     + "<li><a href='/BonCommande/VoirCommandes'>Voir vos bons de commande</a></li>"                       
                                     + "</ul></li></ul>"
+                                    + "<ul class='nav navbar-nav'>"
+                                    + "<li class='dropdown'>"
+                                    + "<a href='' class='dropdown-toggle' data-toggle='dropdown' role='button' "
+                                    + "aria-haspopup='true' aria-expanded='false'>Statistiques<span class='caret'></span></a>"
+                                    + "<ul class='dropdown-menu'>"
+                                    + "<li><a href='/BonCommande/googlePieChart.jsp'>Nombre de commandes par client</a></li>"          
+                                    + "</ul></li></ul>"
                                     + "</div></div>");
-
+                           
                             out.println(""
                                     + "<div class='nav navbar-right'>"
                                     + "<form method='post' action='/BonCommande/Deconnection'>"
