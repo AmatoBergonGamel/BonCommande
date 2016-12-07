@@ -8,12 +8,12 @@
     <body>
         <%@ include file="menu.jsp" %>
         <h1>Fiche client</h1>
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
     </body>
 </html>

@@ -33,9 +33,12 @@ public class Commandes {
     }
 
     /**
+     * ajoute un bon de commande à la base e données
      *
-     * @param email
-     * @return l'identifiant correspondant au mail saisi
+     * @param customerid
+     * @param productid
+     * @param quantity
+     * @param company
      * @throws SQLException
      */
     public void ajoutCommande(int customerid, int productid, int quantity, String company) throws SQLException {
@@ -74,18 +77,20 @@ public class Commandes {
         connection.close();
 
     }
-/**
+
+    /**
+     * modifie une commande de la base de données
      *
      * @param order_num
+     * @param product_id
      * @param quantity
      * @param company
-     * @return l'identifiant correspondant au mail saisi
      * @throws SQLException
      */
     public void modifierCommande(int order_num, int product_id, int quantity, String company) throws SQLException {
 
         String sql = "UPDATE PURCHASE_ORDER SET PRODUCT_ID = ? , QUANTITY = ?, SHIPPING_COST = ?, SALES_DATE =?, SHIPPING_DATE =? , FREIGHT_COMPANY =? WHERE ORDER_NUM = ?";
-       
+
         Connection connection = myDataSource.getConnection();
 
         java.util.Date utilNow = new java.util.Date();
@@ -95,6 +100,7 @@ public class Commandes {
         stmt.setInt(1, product_id);
         stmt.setInt(2, quantity);
         stmt.setFloat(3, (float) 10.00);
+        // on rentre la date actuelle, récuperée ci-dessus en java
         stmt.setDate(4, sqlNow);
         stmt.setDate(5, sqlNow);
         stmt.setString(6, company);
@@ -105,6 +111,13 @@ public class Commandes {
         connection.close();
 
     }
+
+    /**
+     * supprime une commande de la base de données
+     *
+     * @param order
+     * @throws SQLException
+     */
     public void supprimerCommande(int order) {
 
         String sql = "DELETE FROM PURCHASE_ORDER WHERE ORDER_NUM = ?";
@@ -122,8 +135,11 @@ public class Commandes {
 
     }
 
-    /*
-    Recupere une commande de par son identifiant
+    /**
+    *   Recupere une commande de par son identifiant
+     * @param order
+     * @return une commande
+     * @throws java.sql.SQLException
      */
     public OrderEntity recupererCommande(int order) throws SQLException {
 
@@ -147,7 +163,8 @@ public class Commandes {
     }
 
     /**
-     *
+     * recupere toutes les commandes de la base de données
+     * Pas utilisée dans l'appli
      * @return @throws Exception
      */
     public List<OrderEntity> allCommands() throws Exception {
@@ -173,7 +190,8 @@ public class Commandes {
     }
 
     /**
-     *
+     * recuperer toutes les commandes d'un user
+     * @param customer_id
      * @return @throws Exception
      */
     public List<OrderEntity> CommandsUser(int customer_id) throws Exception {
@@ -200,7 +218,7 @@ public class Commandes {
     }
 
     /**
-     *
+     * recupere la liste de tous les produits de la base de données
      * @return la liste des produits ne vente
      * @throws Exception
      */
@@ -224,7 +242,7 @@ public class Commandes {
     }
 
     /**
-     *
+     * recupere la liste de toutes le compagnies de livraison de la base de données
      * @return la liste des produits ne vente
      * @throws Exception
      */

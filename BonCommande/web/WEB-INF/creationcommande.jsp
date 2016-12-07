@@ -34,7 +34,7 @@
                             </div>
                             <br />
                         </div>
-                                                
+
                         <div class="form-group row">
                             <label for="compagnieLivraisonCommande" class="col-md-3 col-form-label">Compagnie de livraison</label>
                             <div class="col-md-9">
@@ -49,12 +49,11 @@
                     </fieldset>
             </div>
             <div  class="col-md-8 col-md-offset-2">
-                <%
-                    if (session.getAttribute("utilisateur") != null) {
-                            User user = (User) session.getAttribute("utilisateur");
-                            out.println("<input type='hidden' id='id_costumer' name='id_costumer' value='"+user.getPassword()+"'/>");
+                <%                    if (session.getAttribute("utilisateur") != null) {
+                        User user = (User) session.getAttribute("utilisateur");
+                        out.println("<input type='hidden' id='id_costumer' name='id_costumer' value='" + user.getPassword() + "'/>");
                     }
-                    
+
                 %>
                 <input type="submit" class="btn btn-primary" value="Valider"  />
                 <input type="reset" class="btn btn-warning" value="Remettre à zéro" /> <br />

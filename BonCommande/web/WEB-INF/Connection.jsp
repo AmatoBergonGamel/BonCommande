@@ -11,7 +11,6 @@
         <div class="row">
         <% 
             User utilisateur = (User) session.getAttribute("utilisateur");
-            out.println("<h1 class='col-md-8 col-md-offset-2'>"+utilisateur.getEmail()+"</h1>");
             String essai2 = (String) session.getAttribute("mdp");
            
            String aemail = (String) request.getAttribute("attemail");

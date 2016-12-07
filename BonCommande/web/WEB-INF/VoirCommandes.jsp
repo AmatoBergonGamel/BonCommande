@@ -43,7 +43,7 @@
                                         <input type="hidden" name="num_order" id="num_order" value="${record.getoid()}">
                                         <input type='submit' class='btn btn-danger' value='Supprimer'>
                                     </form>
-                                    </td>
+                                </td>
                             </tr>
                         </tbody>
                     </c:forEach>  

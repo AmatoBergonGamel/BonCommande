@@ -35,21 +35,21 @@ public class VoirCommandes extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/VoirCommandes.jsp").forward(request,response);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/VoirCommandes.jsp").forward(request, response);
     }
 
-    
     public DataSource getDataSource() throws SQLException {
-		org.apache.derby.jdbc.ClientDataSource ds = new org.apache.derby.jdbc.ClientDataSource();
-		ds.setDatabaseName("sample");
-		ds.setUser("app");
-		ds.setPassword("app");
-		// The host on which Network Server is running
-		ds.setServerName("localhost");
-		// port on which Network Server is listening
-		ds.setPortNumber(1527);
-		return ds;
+        org.apache.derby.jdbc.ClientDataSource ds = new org.apache.derby.jdbc.ClientDataSource();
+        ds.setDatabaseName("sample");
+        ds.setUser("app");
+        ds.setPassword("app");
+        // The host on which Network Server is running
+        ds.setServerName("localhost");
+        // port on which Network Server is listening
+        ds.setPortNumber(1527);
+        return ds;
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -62,7 +62,7 @@ public class VoirCommandes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Commandes dao = null;
         try {
             dao = new Commandes(getDataSource());
@@ -70,15 +70,15 @@ public class VoirCommandes extends HttpServlet {
             Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-               HttpSession session = request.getSession();
-               User user = (User) session.getAttribute("utilisateur");
-               String id = user.getPassword();
-               int customerid = Integer.parseInt(id);
-            request.setAttribute("codes",dao.CommandsUser(customerid));
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("utilisateur");
+            String id = user.getPassword();
+            int customerid = Integer.parseInt(id);
+            request.setAttribute("codes", dao.CommandsUser(customerid));
         } catch (Exception ex) {
             Logger.getLogger(VoirCommandes.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         processRequest(request, response);
     }
 
