@@ -104,5 +104,33 @@ public class DAO {
 		}
 		return result;
 	}
+        
+        /**
+	 * ventes par produits
+	 *
+	 * @return Une Map associant le nom du client à ses catégories d'achat
+         * @throws SQLException
+	 */
+	public Map<String, Double> productsByCustomer(int id_customer) throws SQLException {
+		Map<String, Double> result = new HashMap<>();
+		String sql = "SELECT DESCRIPTION, SUM(po.PRODUCT_ID * po.QUANTITY) AS SALES" +
+		"	      FROM PURCHASE_ORDER po" +
+		"	      INNER JOIN PRODUCT p ON (po.PRODUCT_ID = p.PRODUCT_ID)" +
+                "             WHERE po.CUSTOMER_ID = "+id_customer+
+		"	      GROUP BY DESCRIPTION";
+		try (Connection connection = myDataSource.getConnection(); 
+		     Statement stmt = connection.createStatement();
+                    
+		     ResultSet rs = stmt.executeQuery(sql)) {
+			while (rs.next()) {
+				// On récupère les champs nécessaires de l'enregistrement courant
+				String description = rs.getString("DESCRIPTION");
+				double sales = rs.getDouble("SALES");
+				// On l'ajoute à la liste des résultats
+				result.put(description, sales);
+			}
+		}
+		return result;
+	}
 	
 }

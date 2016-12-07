@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import beans.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -18,15 +19,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import com.google.gson.*;
+import javax.servlet.http.HttpSession;
 
 import model.DAO;
 
 /**
  *
- * @author nico
+ * @author Anaïs
  */
-@WebServlet(name = "salesByCustomer", urlPatterns = {"/salesByCustomer"})
-public class SalesByCustomerInJSON extends HttpServlet {
+@WebServlet(name = "productsByCustomer", urlPatterns = {"/productsByCustomer"})
+public class ProductsByCustomerInJSON extends HttpServlet {
 
 	public DataSource getDataSource() throws SQLException {
 		org.apache.derby.jdbc.ClientDataSource ds = new org.apache.derby.jdbc.ClientDataSource();
@@ -59,7 +61,14 @@ public class SalesByCustomerInJSON extends HttpServlet {
 			DAO dao = new DAO(getDataSource());
 			// Générer du JSON
 			Gson gson = new Gson();
-			String gsonData = gson.toJson(dao.salesByCustomer());
+                        
+                               // recuperer le user actuel
+                        HttpSession session = request.getSession();
+                        User user = (User) session.getAttribute("utilisateur");
+                        String customer_id = user.getPassword();
+                        int customer_id2 = Integer.parseInt(customer_id);
+                        
+			String gsonData = gson.toJson(dao.productsByCustomer(customer_id2));
 			out.println(gsonData);			
 		} catch (Exception ex) {
 			Logger.getLogger("JSONServlet").log(Level.SEVERE, "Action en erreur", ex);

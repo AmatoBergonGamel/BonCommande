@@ -24,45 +24,5 @@
 	
         <!-- On charge l'API Google -->
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	<script type="text/javascript">
-		google.load("visualization", "1", {packages: ["corechart"]});
-
-		// Après le chargement de la page, on fait l'appel AJAX
-		google.setOnLoadCallback(doAjax);
-		
-		function drawChart(dataArray) {
-			var data = google.visualization.arrayToDataTable(dataArray);
-			var options = {
-				title: 'Ventes par client',
-				//is3D: true,
-                                pieHole: 0.5
-
-			};
-			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-			chart.draw(data, options);
-		}
-                
-
-		// Afficher les ventes par client
-		function doAjax() {
-			$.ajax({
-				url: "salesByCustomer",
-				dataType: "json",
-				success: // La fonction qui traite les résultats
-					function (result) {
-						// On reformate le résultat comme un tableau
-						var chartData = [];
-						// On met le descriptif des données
-						chartData.push(["Client", "Ventes"]);
-						for(var client in result) {
-							chartData.push([client, result[client]]);
-						}
-						// On dessine le graphique
-						drawChart(chartData);
-					}
-				
-			});
-		}	
 	
-	</script>
 </head>

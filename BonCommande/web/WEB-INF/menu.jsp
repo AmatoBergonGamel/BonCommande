@@ -37,7 +37,8 @@
                                     + "<a href='' class='dropdown-toggle' data-toggle='dropdown' role='button' "
                                     + "aria-haspopup='true' aria-expanded='false'>Statistiques<span class='caret'></span></a>"
                                     + "<ul class='dropdown-menu'>"
-                                    + "<li><a href='/BonCommande/googlePieChart.jsp'>Nombre de commandes par client</a></li>"          
+                                    + "<li><a href='/BonCommande/googlePieChart.jsp'>Nombre de commandes par client</a></li>"    
+                                    + "<li><a href='/BonCommande/productsByCostumer.jsp'>Produits commandés par catégories</a></li>"    
                                     + "</ul></li></ul>"
                                     + "</div></div>");
                            

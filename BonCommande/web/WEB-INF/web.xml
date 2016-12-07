@@ -40,6 +40,10 @@
         <servlet-name>ModifierBonCommande</servlet-name>
         <servlet-class>servlet.ModifierBonCommande</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductsByCustomerInJSON</servlet-name>
+        <servlet-class>servlet.ProductsByCustomerInJSON</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -53,14 +57,6 @@
         <servlet-name>Authentification</servlet-name>
         <url-pattern>/Authentification</url-pattern>
         <url-pattern>/authentification</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>CréationClient</servlet-name>
-        <servlet-class>servlet.CréationClient</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CréationClient</servlet-name>
-        <url-pattern>/CreationClient</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FinCréationClient</servlet-name>
@@ -97,6 +93,10 @@
     <servlet-mapping>
         <servlet-name>ModifierBonCommande</servlet-name>
         <url-pattern>/ModifierBonCommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductsByCustomerInJSON</servlet-name>
+        <url-pattern>/ProductsByCustomerInJSON</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
